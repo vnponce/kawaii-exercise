@@ -18,9 +18,10 @@ const SelectCharacterStyled = styled.div`
   }
   .options {
     width: 60%;
-    display: flex;
-    flex-wrap: wrap;
+    //display: flex;
+    //flex-wrap: wrap;
     span {
+      display: inline-block;
       height: fit-content;
       background: cadetblue;
       color: white;
@@ -32,11 +33,27 @@ const SelectCharacterStyled = styled.div`
         background: darkcyan;
       }
     }
+    button {
+      display: block;
+      padding: 1em;
+      border-radius: 5px;
+      margin: auto;
+      margin-top: 3em;
+      width: 50%;
+      background: darkorange;
+      color: white;
+      font-size: 20px;
+      cursor:pointer;
+      &:hover {
+        background: orangered;
+      }
+    }
   }
 `;
 
 function App() {
   const [CurrentCharacter,setCurrentCharacter] = useState('Planet');
+  const [battle,setBattle] = useState(false);
   const components = {
     Backpack,
     Browser,
@@ -54,18 +71,32 @@ function App() {
   function changeCharacter(character) {
     setCurrentCharacter(character);
   }
+
+  function toggleBattle() {
+    setBattle(!battle);
+  }
+
   console.log('char =>', components[CurrentCharacter]);
   const Char = components[CurrentCharacter];
   return (
     <div className="App">
-      <SelectCharacterStyled>
-        <div className="box preview">
-          <Char size={200} mood="blissful" color="#FDA7DC" />
-        </div>
-        <div className="box options">
-          {Object.keys(components).map(item => <span onClick={() => changeCharacter(item)}>{item}</span>)}
-        </div>
-      </SelectCharacterStyled>
+      {!battle && (
+        <SelectCharacterStyled>
+          <div className="box preview">
+            <Char size={200} mood="blissful" color="#FDA7DC" />
+          </div>
+          <div className="box options">
+            {Object.keys(components).map(item => <span onClick={() => changeCharacter(item)}>{item}</span>)}
+            <button onClick={toggleBattle}>Ready!</button>
+          </div>
+        </SelectCharacterStyled>
+      )}
+      {battle && (
+        <>
+          <h1>la batalla</h1>
+          <button onClick={toggleBattle}>Pelear</button>
+        </>
+      )}
     </div>
   );
 }
