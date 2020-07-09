@@ -1,6 +1,7 @@
 .App {
   text-align: center;
-  background: lightblue;
+  /*background: lightblue;*/
+  background: aliceblue;
   height: 100vh;
   display: flex;
   align-items: center;

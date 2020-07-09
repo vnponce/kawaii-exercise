@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import { Planet, Backpack, Browser, Cat, Chocolate, CreditCard, File, Ghost, IceCream, Mug, SpeechBubble } from 'react-kawaii';
 import styled from 'styled-components';
+import { CirclePicker } from 'react-color';
 import './App.css';
 
 const ButtonStyeld = styled.button`
@@ -18,14 +19,22 @@ const SelectCharacterStyled = styled.div`
   height: 50%;
   width: 60%;
   display: flex;
+  background: white;
+  border-radius: 5px;
+  box-shadow: 5px 5px 25px black;
+  padding: 15px;
   .box {
-    border: 1px solid red;
+    //border: 1px solid red;
   }
   .preview {
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     width: 40%;
+    .circle-picker {
+      margin-top: 20px;
+    }
   }
   .options {
     width: 60%;
@@ -65,7 +74,11 @@ const SelectCharacterStyled = styled.div`
 const FightFieldStyled = styled.div`
   height: 50%;
   width: 60%;
-  border: 1px solid red;
+  //border: 1px solid red;
+  background: white;
+  border-radius: 5px;
+  box-shadow: 5px 5px 25px black;
+  padding: 15px 60px;
   .field {
     display: flex;
     justify-content: space-around;
@@ -106,13 +119,14 @@ function App() {
     SpeechBubble,
   }
   const [CurrentCharacter,setCurrentCharacter] = useState('Planet');
+  const [color,setColor] = useState('#f44336');
   const [charOne, setCharOne] = useState(defaultCharData)
   const [charTwo, setCharTwo] = useState(defaultCharData)
 
   const [charOnePoints,setCharOnePoints] = useState(defailtCharPoints);
   const [charTwoPoints,setCharTwoPoints] = useState(defailtCharPoints);
 
-  const [battle,setBattle] = useState(true);
+  const [battle,setBattle] = useState(false);
 
   useEffect(() => {}, [charOnePoints]);
   useEffect(() => {
@@ -148,7 +162,11 @@ function App() {
       {!battle && (
         <SelectCharacterStyled>
           <div className="box preview">
-            <Char size={200} mood="blissful" color="#FDA7DC" />
+            <Char size={200} mood="blissful" color={color} />
+              <CirclePicker color={color} onChange={color => {
+                console.log('color =>', color)
+                setColor(color.hex);
+              }}/>
           </div>
           <div className="box options">
             {Object.keys(components).map(item => <span onClick={() => changeCharacter(item)}>{item}</span>)}
@@ -158,11 +176,11 @@ function App() {
       )}
       {battle && (
         <FightFieldStyled>
-          <h1>la batalla</h1>
+          <h1>Battle</h1>
           <div className="field">
             <div className="char char-one">
               <h2>{charOnePoints}</h2>
-              <Char size={200} mood={charOne.mood} color="#FDA7DC" />
+              <Char size={200} mood={charOne.mood} color={color} />
               <h2>{charOne.win && 'Winner!!!'}</h2>
             </div>
             {!(charOne.win || charTwo.win) && <ButtonStyeld onClick={() => setCharTwoPoints(charTwoPoints - 1)}>Fight!</ButtonStyeld>}
