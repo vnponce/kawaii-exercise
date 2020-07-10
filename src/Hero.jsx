@@ -1,6 +1,7 @@
 import React, {useRef, useState} from 'react';
 import styled from 'styled-components';
-import { Cat, Ghost } from 'react-kawaii';
+import { Ghost } from 'react-kawaii';
+import { motion } from "framer-motion"
 
 
 const HeroStyled = styled.div`
@@ -40,25 +41,32 @@ const HeroStyled = styled.div`
 
 function Hero() {
   const ref = useRef(null);
+  // Valores iniciales cuando es de día y esta 'muerto' x_x
   const dayValue = {
     color: 'white',
     mood: 'ko',
     size: 200,
   };
+  // Valores cuando es de noche y el fantasma aparece feliz :D
   const nightValue = {
     color: 'gray',
     mood: 'blissful',
     size: 400
   }
+
   const [ghost, setGhost] = useState(dayValue);
+
+  // usado para cambiar el dark-mode
   function handleChange() {
     if(ref.current.checked) {
       document.body.classList.remove('is-light-mode');
       document.body.classList.add('is-dark-mode');
+      // Es de noche y debe verse el fantasma
       setGhost(nightValue)
     } else {
       document.body.classList.remove('is-dark-mode');
       document.body.classList.add('is-light-mode');
+      // Es de día y debe ocultarse el fantasma
       setGhost(dayValue)
     }
   }
@@ -76,10 +84,14 @@ function Hero() {
        </label>
      </header>
      <main className="hero-text">
-       {/*<h1>I am John Doe</h1>*/}
-       {/*<p>And I'm a Photographer</p>*/}
-       {/*<button>Hire me</button>*/}
-       <Ghost size={200} mood="blissful" {...ghost} />
+       {/*Motion viene de la librería framer-motion https://www.framer.com/motion/ para realizar animaciones*/}
+       <motion.div
+         initial={{ opacity: 0.5 }}
+         animate={{ y: 15, x: 10, opacity: 1 }}
+         transition={{ yoyo: Infinity, duration: 3, ease: "easeInOut" }}
+       >
+         <Ghost size={200} mood="blissful" {...ghost} />
+       </motion.div>
      </main>
    </HeroStyled>
  );
