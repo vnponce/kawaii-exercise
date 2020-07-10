@@ -3,6 +3,7 @@ import { Planet, Backpack, Browser, Cat, Chocolate, CreditCard, File, Ghost, Ice
 import styled from 'styled-components';
 import { CirclePicker } from 'react-color';
 import './App.css';
+import Hero from "./Hero";
 
 const ButtonStyeld = styled.button`
   padding: 1em;
@@ -159,7 +160,7 @@ function App() {
   const Char = components[CurrentCharacter];
   return (
     <div className="App">
-      {!battle && (
+      {battle && (
         <SelectCharacterStyled>
           <div className="box preview">
             <Char size={200} mood="blissful" color={color} />
@@ -193,6 +194,7 @@ function App() {
           </div>
         </FightFieldStyled>
       )}
+      <Hero />
     </div>
   );
 }
