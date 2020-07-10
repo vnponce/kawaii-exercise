@@ -46,7 +46,7 @@ main::before {
   top: 100px;
   bottom: 0;
   font-size: 100vh;
-  opacity: 0.3;
+  opacity: 0.2;
 }
 
 .is-light-mode main::before {
