@@ -1,3 +1,6 @@
+:root {
+  --lightGray: #f8f9fe;
+}
 .is-light-mode {
   --basebackGround: white;
   --baseColor: #1d2029;
@@ -6,3 +9,78 @@
   --basebackGround: #1d2029;
   --baseColor: white;
 }
+
+header {
+  color: var(--baseColor);
+  width: 100%;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 30px;
+  box-sizing: border-box;
+  background: var(--basebackGround);
+  border-bottom: 3px solid var(--baseColor);
+}
+a {
+  margin-left: 30px;
+  text-decoration: none;
+  color: inherit;
+}
+label, [type=checkbox] {
+  cursor:pointer;
+}
+main {
+  background: var(--basebackGround);
+  display: flex;
+  width: 100%;
+  height: calc(100% - 100px);
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  color: var(--baseColor);
+}
+
+#ghost {
+  animation: floaty 4s infinite, ghosty 7s infinite;
+}
+
+#shadow {
+  background: var(--lightGray);
+  width: 160px;
+  height: 40px;
+  border-radius: 50%;
+  animation: zoomy 4s infinite;
+  opacity: 0.7;
+}
+
+.is-dark-mode #shadow{
+  width: 260px;
+}
+@keyframes floaty {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+@keyframes zoomy {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(0.8);
+  }
+}
+
+@keyframes ghosty {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.6;
+  }
+}
+
