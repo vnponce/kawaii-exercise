@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/kawaii-exercise/static/css/main.e5f35acc.chunk.css",
+    "main.js": "/kawaii-exercise/static/js/main.2b55885e.chunk.js",
+    "main.js.map": "/kawaii-exercise/static/js/main.2b55885e.chunk.js.map",
+    "runtime-main.js": "/kawaii-exercise/static/js/runtime-main.b1225a6b.js",
+    "runtime-main.js.map": "/kawaii-exercise/static/js/runtime-main.b1225a6b.js.map",
+    "static/js/2.9b2717f2.chunk.js": "/kawaii-exercise/static/js/2.9b2717f2.chunk.js",
+    "static/js/2.9b2717f2.chunk.js.map": "/kawaii-exercise/static/js/2.9b2717f2.chunk.js.map",
+    "index.html": "/kawaii-exercise/index.html",
+    "precache-manifest.9d95aa4280b94bac2aa023d05c608319.js": "/kawaii-exercise/precache-manifest.9d95aa4280b94bac2aa023d05c608319.js",
+    "service-worker.js": "/kawaii-exercise/service-worker.js",
+    "static/css/main.e5f35acc.chunk.css.map": "/kawaii-exercise/static/css/main.e5f35acc.chunk.css.map",
+    "static/js/2.9b2717f2.chunk.js.LICENSE.txt": "/kawaii-exercise/static/js/2.9b2717f2.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.b1225a6b.js",
+    "static/js/2.9b2717f2.chunk.js",
+    "static/css/main.e5f35acc.chunk.css",
+    "static/js/main.2b55885e.chunk.js"
+  ]
+}
