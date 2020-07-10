@@ -41,6 +41,22 @@ main {
   color: var(--baseColor);
 }
 
+main::before {
+  position: fixed;
+  top: 100px;
+  bottom: 0;
+  font-size: 100vh;
+  opacity: 0.3;
+}
+
+.is-light-mode main::before {
+  content: 'day';
+}
+
+.is-dark-mode main::before {
+  content: 'nait';
+}
+
 #ghost {
   animation: floaty 4s infinite, ghosty 7s infinite;
 }
@@ -50,7 +66,7 @@ main {
   width: 160px;
   height: 40px;
   border-radius: 50%;
-  animation: zoomy 4s infinite;
+  animation: zoomy 4s infinite, ghosty 7s infinite;
   opacity: 0.7;
 }
 
